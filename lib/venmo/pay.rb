@@ -30,7 +30,11 @@ module Venmo
 
     def core_pay
       h = @send_hash.collect{|k,v| "#{k.to_s}=#{v.respond_to?(:gsub) ? CGI::escape(v) : v}"}.join('&')
-      to_send = "curl https://api.venmo.com/payments --data \"#{h}\""
+      if Rails.env.production?
+        to_send = "curl https://api.venmo.com/v1/payments --data \"#{h}\""
+      else
+        to_send = "curl https://sandbox-api.venmo.com/v1/payments --data \"#{h}\""
+      end
       `#{to_send}`
     end
   end
