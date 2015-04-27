@@ -15,11 +15,13 @@ Curl now posts to endpoint with --data call.
 
 ====
 
-Venmo.pay_by_email(email, amount, note)
+#For privacy: private, public, friends are vaild options
 
-Venmo.pay_by_user_id(user_id, amount, note)
+Venmo.pay_by_email(email, amount, note, access_token, privacy)
 
-Venmo.pay_by_phone_number(phone_number, amount, note)
+Venmo.pay_by_user_id(user_id, amount, note, access_token, privacy)
+
+Venmo.pay_by_phone_number(phone_number, amount, note, access_token, privacy)
 
 I think these are working. Tests coming soon. 
 
